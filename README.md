@@ -8,6 +8,10 @@
 
 Cross-platform gcal/outlook like calendar component for React Native.
 
+### ⚠️ Help me to debug this component ⚠️
+
+It's a hard task to debug three platforms. I usually develop with the Web version first, then confirm its functionality with real devices. My PC is Linux and my phone is Android, so Android is easiliy tested, but to debug on iOS, I have to bring my Macbook Pro from my garage and connect my wife's iPhone and test it. Every time I launch my Macbook Pro, it requires the Xcode update and even full system update. It takes so long time to start debug. As React Native works on iOS better than Android, I ~~always~~ sometimes skip testing it, so there should be a bug on iOS. If you help me debug it, I would much appreciate!
+
 [Components Demo](https://react-native-big-calendar.netlify.com/?path=/story/desktop--3days-mode)
 
 <img src="./assets/screenshot-mobile.png" height="500">
@@ -18,19 +22,19 @@ Cross-platform gcal/outlook like calendar component for React Native.
 
 - Cross Platform: Runs on the Web, iOS, Android with the power of React
 - Type-safe: Fully written in TypeScript
-- Customizable: Adjust styles of components
-- Lightweight: ~37.4KB, dependency is `dayjs` and `calendarize`
+- Customizable: Able to provide your own theme, and pass your component to render.
+- Lightweight: ~37.4KB, dependency is `dayjs` and `calendarize` and `merge-anything`
 
 # Install
 
 ```
-npm install --save react-native-big-calendar
+npm install --save react-native-big-calendar@2.0.0-rc
 ```
 
 Or if you use Yarn:
 
 ```
-yarn add react-native-big-calendar
+yarn add react-native-big-calendar@2.0.0-rc
 ```
 
 ### Other dependencies
@@ -107,11 +111,9 @@ export interface CalendarProps<T> {
   mode?: Mode
   scrollOffsetMinutes?: number
   showTime?: boolean
-  style?: ViewStyle
   swipeEnabled?: boolean
   weekStartsOn?: WeekNum
   weekEndsOn?: WeekNum
-  isRTL?: boolean
   onChangeDate?: DateRangeHandler
   onPressCell?: (date: Date) => void
   onPressDateHeader?: (date: Date) => void
@@ -131,7 +133,6 @@ export interface CalendarProps<T> {
 | `onPressCell`         | no       | `(date: Date) => void`                                 | Event handler which will be fired when the current date cell is clicked. The minute set to 0.                                                                                                                                                                                                                                                                                                                                                                   |
 | `onPressDateHeader`   | no       | `(date: Date) => void`                                 | Event handler which will be fired when the user clicks a date from the header.                                                                                                                                                                                                                                                                                                                                                                                  |
 | `mode`                | no       | 'month' \| 'week' \| `'3days' \| 'day' \| 'custom'`    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `style`               | no       | `import('react-native').ViewStyle`                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `eventCellStyle`      | no       | `ViewStyle \| (event: ICalendarEvent<T>) => ViewStyle` | The style of Event cell. Accepts either style object (static) or function (dynamic).                                                                                                                                                                                                                                                                                                                                                                            |
 | `scrollOffsetMinutes` | no       | `number`                                               | Scroll to specific minutes in a day. e.g.) set `480` to scroll to 8am when the calendar rendered.                                                                                                                                                                                                                                                                                                                                                               |
 | `date`                | no       | `Date`                                                 | Initial date. Defualts to `Date`                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -144,6 +145,7 @@ export interface CalendarProps<T> {
 | `overlapOffset`       | no       | `number`                                               | Adjusts the indentation of events that occur during the same time period. Defaults to 20 on web and 8 on mobile.                                                                                                                                                                                                                                                                                                                                                |
 | `isRTL`               | no       | `boolean`                                              | Switches the direction of the layout for use with RTL languages. Defaults to false.                                                                                                                                                                                                                                                                                                                                                                             |
 | `renderEvent`         | no       | `EventRenderer`                                        | Custom event renderer. See below type definition.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `renderHeader`        | no       | `HeaderRenderer`                                       | Custom header renderer.                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 ## EventRenderer
 
@@ -269,3 +271,11 @@ Enterprise customers are able to obtain:
 Note that Enterprise features will be distributed to the OSS version.
 
 If you are interested in those features, please send an email to: ketsume0211@gmail.com
+
+# Hire me
+
+I'm a freelance software engineer specialized in React, React Native and TypeScript. Also available for GraphQL and RDB backend, and Node.JS applications.
+
+If you are interested in hiring me, please send an email to: ketsume0211@gmail.com
+
+I'm based in Japan (by the beautiful sea), so a remote contract job is especially welcome.
